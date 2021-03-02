@@ -26,5 +26,4 @@ public class AuthController {
         System.out.println(user);
         authServiceImpl.register(user);
     }
-
 }
