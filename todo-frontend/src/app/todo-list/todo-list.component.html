@@ -1,0 +1,27 @@
+<div>
+    <h3>All Todos!</h3>
+
+    <nav>
+        <a routerLink="/create">Create a Todo!</a>
+    </nav>
+
+    <br />
+
+    <div>
+        <table border=1>
+            <tr>
+                <th>Title</th>
+                <th>Completed</th>
+                <th>Date</th>
+                <th>Edit/Deletet</th>
+            </tr>
+            <tr *ngFor="let todo of todos">
+                <td>{{todo.title}}</td>
+                <td>{{todo.completed}}</td>
+                <td>{{todo.createdAt | date:"short" }}</td>
+                <td><button (click)="editTodo(todo.id)">Edit</button><button (click)="deleteTodo(todo.id)">Delete</button></td>
+            </tr>
+            
+        </table>
+    </div>
+</div>

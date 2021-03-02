@@ -1,0 +1,25 @@
+<div>
+    <h3>Create a todo!</h3>
+
+    <nav>
+        <a routerLink="/todos">To list of Todos!</a>
+    </nav>
+
+    <br />
+
+    
+    <div>
+        <form (submit)="createTodo()">
+            <label> Title:
+                <input 
+                    type="text"
+                    name="inputTodo"
+                    placeholder="Name of todo"
+                    [(ngModel)]="title"
+                />
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+</div>

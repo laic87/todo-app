@@ -1,0 +1,14 @@
+<div class="details">
+    <div *ngIf="todo">
+        <h3>Todo Details</h3>
+        <p><span>Id:</span> {{todo.id}}</p>
+        <p><span>Title</span> {{todo.title}}</p>
+        <p><span>Completed:</span> {{todo.completed}}</p>
+        <p><span>CreatedAt:</span> {{todo.createdAt | date }} </p>
+    </div>
+
+    <p>Change Completed</p>
+
+    <button (click)="updateTodo(todo)">Click if you want to complete this todo</button>
+
+</div>

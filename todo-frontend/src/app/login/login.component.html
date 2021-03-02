@@ -1,0 +1,19 @@
+<div>
+    <h1>Login</h1>
+    <form #simpleForm="ngForm" (ngSubmit)="login(simpleForm.value)">
+        <label>Username:
+            <input type="text" ngModel name="username" />
+        </label>
+        <br />
+        <label>Password:
+            <input type="password" ngModel name="password" />
+        </label>
+        <br />
+        <button mat-raised-button color="primary">Submit</button>
+    </form>
+    
+    <br/>
+    <nav>
+        <a routerLink="/register">No account? Register here</a>
+    </nav>
+</div>
