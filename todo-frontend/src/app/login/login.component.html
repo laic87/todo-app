@@ -1,5 +1,8 @@
 <div>
     <h1>Login</h1>
+    <div [hidden]="!error">
+        <p>Username or password wasnt right</p>
+    </div>
     <form #simpleForm="ngForm" (ngSubmit)="login(simpleForm.value)">
         <label>Username:
             <input type="text" ngModel name="username" />
