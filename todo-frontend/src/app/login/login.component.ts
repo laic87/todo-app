@@ -28,9 +28,6 @@ export class LoginComponent implements OnInit {
     };
 
     this.auth.login(user).subscribe((res) => {
-      console.log("====");
-      console.log(res);
-      console.log("====");
       if (res.response == "success")
         this.router.navigate(["/todos"]);
       else {
