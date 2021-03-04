@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "../user";
-import { LoginRegisterService } from "../login-register.service";
 import { UserService } from "../user.service";
 
 @Component({
@@ -11,7 +10,6 @@ import { UserService } from "../user.service";
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private loginRegister: LoginRegisterService,
     private userService: UserService
   ) { }
 
