@@ -1,4 +1,7 @@
 <div>
+    <div *ngIf="errorMessage">´
+        {{errorMessage}}
+    </div>
     <h1>Register</h1>
     <form #simpleForm="ngForm" (ngSubmit)="register(simpleForm.value)">
         <label>Username:

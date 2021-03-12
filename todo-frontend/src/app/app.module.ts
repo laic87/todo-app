@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button";
 import { RegisterComponent } from './register/register.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserListComponent } from './user-list/user-list.component';
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
-    UserListComponent
+    UserListComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

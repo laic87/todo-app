@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { User } from "../user";
-import { AuthService } from "../auth.service"; 
+import { User } from "../model/user";
+import { AuthService } from "../_services/auth.service"; 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,12 +28,15 @@ export class LoginComponent implements OnInit {
       password: value.password
     };
 
-    this.auth.login(user).subscribe((res) => {
-      if (res.response == "success")
-        this.router.navigate(["/todos"]);
-      else {
-        this.error = res[0];
+    this.auth.login(user).subscribe(
+      response => {
+        if(response.response === "success") {
+          this.router.navigate(["/todos"]);
+        } else {
+          this.error = response[0];
+          console.log("hej!");
+        }
       }
-    });
+    )
   }
 }

@@ -6,6 +6,7 @@ import { TodoListComponent } from "./todo-list/todo-list.component";
 import { CreateTodoComponent } from "./create-todo/create-todo.component";
 import { TodoDetailComponent } from "./todo-detail/todo-detail.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full"},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "todos", component: TodoListComponent },
   { path: "create", component: CreateTodoComponent },
   { path: "todo/:id", component: TodoDetailComponent },
+  { path: "logout", component: LogoutComponent},
   { path: "404", component: PageNotFoundComponent },
   { path: "**", redirectTo: "404"},
 ]
