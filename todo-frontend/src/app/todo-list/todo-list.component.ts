@@ -24,7 +24,10 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos(): void {
-    this.todoService.getTodos().subscribe(todos => this.todos = todos);
+    this.todoService.getTodos().subscribe(
+      response => this.todos = response,
+      error => console.log(error)
+    );
   }
 
   editTodo(id: number): void {
@@ -39,7 +42,7 @@ export class TodoListComponent implements OnInit {
         this.ngOnInit();
       }),
       err => {
-        console.log("Error");
+        console.log(err);
       }
   }
   

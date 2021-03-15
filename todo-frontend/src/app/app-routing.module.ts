@@ -8,14 +8,16 @@ import { TodoDetailComponent } from "./todo-detail/todo-detail.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { LogoutComponent } from './logout/logout.component';
 
+import { AuthGuardService } from "./_services/auth-guard.service";
+
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full"},
-  { path: "login", component: LoginComponent},
+  { path: "login", component: LoginComponent, },
   { path: "register", component: RegisterComponent },
-  { path: "todos", component: TodoListComponent },
-  { path: "create", component: CreateTodoComponent },
-  { path: "todo/:id", component: TodoDetailComponent },
-  { path: "logout", component: LogoutComponent},
+  { path: "todos", component: TodoListComponent, canActivate:[AuthGuardService] },
+  { path: "create", component: CreateTodoComponent, canActivate:[AuthGuardService] },
+  { path: "todo/:id", component: TodoDetailComponent, canActivate:[AuthGuardService] },
+  { path: "logout", component: LogoutComponent, canActivate:[AuthGuardService]},
   { path: "404", component: PageNotFoundComponent },
   { path: "**", redirectTo: "404"},
 ]
