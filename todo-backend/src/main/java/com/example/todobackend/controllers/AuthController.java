@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RestController
+@RequestMapping(path = "api/auth")
 public class AuthController {
 
     @Autowired
@@ -21,7 +19,6 @@ public class AuthController {
 
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StringResponse> login(@RequestBody User user) {
-
         boolean result = authServiceImpl.login(user);
         if(result) {
             var test = new StringResponse("success");
@@ -33,8 +30,13 @@ public class AuthController {
     }
 
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void register(@RequestBody User user) {
-        System.out.println(user);
-        authServiceImpl.register(user);
+    public ResponseEntity<StringResponse> register(@RequestBody User user) {
+        boolean result = authServiceImpl.register(user);
+        if(result) {
+            var test = new StringResponse("success");
+            return new ResponseEntity<>(test, HttpStatus.OK);
+        }
+        var test = new StringResponse("username already taken!");
+        return new ResponseEntity<>(test, HttpStatus.FORBIDDEN);
     }
 }

@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { User } from "../model/user";
 
-import { BASE_URL } from "../app-constants";
+import { AUTH_API } from "../app-constants";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,12 +19,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public login(user: User): Observable<any> {
-    return this.http.post<any>(BASE_URL + "/login", user, httpOptions);
+    return this.http.post<any>(AUTH_API + "/login", user, httpOptions);
   }
 
   register(user: User): Observable<User> {
     let headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*','content-type': 'application/json'})
-    return this.http.post<User>(BASE_URL + "/register", user, {"headers": headers});
+    return this.http.post<User>(AUTH_API + "/register", user, {"headers": headers});
   }
 
   public logout(): void {

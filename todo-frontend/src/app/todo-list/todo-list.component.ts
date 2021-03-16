@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { Todo } from "../model/todo";
 import { TodoService } from "../_services/todo.service";
+import { TokenStorageService } from "../_services/token-storage.service";
 
 @Component({
   selector: 'app-todo-list',
@@ -16,7 +17,7 @@ export class TodoListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private todoService: TodoService
+    private todoService: TodoService,
   ) { }
 
   ngOnInit(): void {

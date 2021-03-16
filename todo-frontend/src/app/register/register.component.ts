@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
 
   user: User;
   errorMessage: string;
+  isSuccessful = false;
+  isSignUpFailed = false;
 
   constructor(
     private auth: AuthService,
@@ -22,24 +24,23 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
   register(value: any): void {
     console.log(value);
     let user: User = {
       username: value.username,
       password: value.password
     };
-    //this.loginRegister.register(user).subscribe();
     this.auth.register(user).subscribe(
       response => {
         console.log(response);
         this.user = response;
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
         this.router.navigate(["/todos"]);
       },
       error => {
-        console.log("error!");
         console.log(error);
-        this.errorMessage = error.message;
+        this.errorMessage = error.error.response;
       }
     )
   }

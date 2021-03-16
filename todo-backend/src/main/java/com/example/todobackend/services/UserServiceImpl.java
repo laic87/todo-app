@@ -2,16 +2,21 @@ package com.example.todobackend.services;
 
 import com.example.todobackend.models.User;
 import com.example.todobackend.repositories.UserRepository;
+import com.example.todobackend.ultility.PasswordEncryption;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.example.todobackend.ultility.PasswordEncryption.hash;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
 
     @Override
     public List<User> getAllUsers() {
@@ -24,7 +29,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
+    public void createUser(User userDTO) {
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(hash(userDTO.getPassword()));
         userRepository.save(user);
     }
 
